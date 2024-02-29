@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     bool isGrounded = true;
     [SerializeField] private float jumpForce = 2f;
     private Rigidbody2D pRigidBody;
+    float timeHold = 0;
     void Start()
     {
         pRigidBody = GetComponent<Rigidbody2D>();
@@ -22,9 +23,26 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) && isGrounded)
+        if (Input.GetKey(KeyCode.Space) )
         {
-            pRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            timeHold += Time.deltaTime;
+            if (timeHold >= 1)
+            {
+                transform.localScale = new Vector3(1, 0.5f, 1);
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if(timeHold < 1)
+            {
+                pRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            }
+            if(timeHold >= 1)
+            {
+                transform.localScale = Vector3.one;
+            }
+            timeHold = 0;
         }
 
         
