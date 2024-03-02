@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     bool isGrounded = true;
     [SerializeField] private float jumpForce = 2f;
     private Rigidbody2D pRigidBody;
+    private Touch theTouch;
     float timeHold = 0;
     void Start()
     {
@@ -15,38 +16,30 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.touchCount == 1)
+        if (Input.touchCount > 0)
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Began && isGrounded)
-            {
-                pRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            }
-        }
-
-        if (Input.GetKey(KeyCode.Space) )
-        {
+            theTouch = Input.GetTouch(0);
             timeHold += Time.deltaTime;
-            if (timeHold >= 1)
+
+            if(theTouch.phase == TouchPhase.Stationary && timeHold >= 1)
             {
                 transform.localScale = new Vector3(1, 0.5f, 1);
             }
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            if(timeHold < 1)
+            
+            if(theTouch.phase == TouchPhase.Ended) 
             {
-                pRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                if(timeHold >= 1)
+                {
+                    transform.localScale = Vector3.one;
+                }
+                else if(timeHold < 1 && isGrounded)
+                {
+                    pRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                }
+                timeHold = 0;
             }
-            if(timeHold >= 1)
-            {
-                transform.localScale = Vector3.one;
-            }
-            timeHold = 0;
+            
         }
-
-        
-
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
