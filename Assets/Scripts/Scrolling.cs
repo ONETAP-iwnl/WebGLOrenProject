@@ -1,21 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Scrolling : MonoBehaviour
 {
-    Material material;
-    [SerializeField] Vector2 offset;
+    Material material; 
+    [SerializeField] Vector2 offset; //вектор от которого зависит скорость и направление перемещения фона
 
-    // Start is called before the first frame update
     void Start()
     {
         material = GetComponent<Renderer>().material;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        material.mainTextureOffset += offset * Time.deltaTime;
+        material.mainTextureOffset += offset * Time.deltaTime; //движение текстуры на объекте
     }
 }

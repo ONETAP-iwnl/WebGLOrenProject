@@ -3,44 +3,53 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    bool isGrounded = true;
-    [SerializeField] private float jumpForce = 2f;
+    [SerializeField] private float jumpForce = 2f; 
+    [SerializeField] float waitForDown = 0.3f; // врем€ которое нужно удерживать палец на экране дл€ приседа
+
+    bool isGrounded = true; // нахождение на земле
     private Rigidbody2D pRigidBody;
     private Touch theTouch;
-    float timeHold = 0;
+    float timeHold = 0; // переменна€ дл€ хранени€ времени нахождени€ пальца на экране
 
     private void Awake()
     {
         Application.targetFrameRate = 60;
     }
+
     void Start()
     {
         pRigidBody = GetComponent<Rigidbody2D>();
     }
+
     private void Update()
     {
-        if (Input.touchCount > 0)
+        PlayerJumpOrDown();
+    }
+
+    private void PlayerJumpOrDown() 
+    {
+        if (Input.touchCount > 0) 
         {
             theTouch = Input.GetTouch(0);
             timeHold += Time.deltaTime;
 
-            if(transform.localScale.y > 0.5f && timeHold >= 1 && theTouch.phase == TouchPhase.Stationary)
+            if (transform.localScale.y > 0.5f && timeHold >= waitForDown && theTouch.phase == TouchPhase.Stationary)
             {
                 transform.localScale = new Vector3(1, 0.5f, 1);
             }
-            else if(theTouch.phase == TouchPhase.Ended) 
+            else if (theTouch.phase == TouchPhase.Ended)
             {
-                if(timeHold >= 1)
+                if (timeHold >= waitForDown)
                 {
                     transform.localScale = Vector3.one;
                 }
-                else if(isGrounded)
+                else if (isGrounded)
                 {
                     pRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 }
                 timeHold = 0;
             }
-            
+
         }
     }
     void OnCollisionEnter2D(Collision2D collision)
