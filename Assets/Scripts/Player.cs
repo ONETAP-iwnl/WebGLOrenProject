@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +8,11 @@ public class Player : MonoBehaviour
     private Rigidbody2D pRigidBody;
     private Touch theTouch;
     float timeHold = 0;
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
     void Start()
     {
         pRigidBody = GetComponent<Rigidbody2D>();
@@ -21,18 +24,17 @@ public class Player : MonoBehaviour
             theTouch = Input.GetTouch(0);
             timeHold += Time.deltaTime;
 
-            if(theTouch.phase == TouchPhase.Stationary && timeHold >= 1)
+            if(transform.localScale.y > 0.5f && timeHold >= 1 && theTouch.phase == TouchPhase.Stationary)
             {
                 transform.localScale = new Vector3(1, 0.5f, 1);
             }
-            
-            if(theTouch.phase == TouchPhase.Ended) 
+            else if(theTouch.phase == TouchPhase.Ended) 
             {
                 if(timeHold >= 1)
                 {
                     transform.localScale = Vector3.one;
                 }
-                else if(timeHold < 1 && isGrounded)
+                else if(isGrounded)
                 {
                     pRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 }
@@ -47,6 +49,10 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+        }
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
     void OnCollisionExit2D(Collision2D collision)
