@@ -11,11 +11,6 @@ public class Player : MonoBehaviour
     private Touch theTouch;
     float timeHold = 0; // переменная для хранения времени нахождения пальца на экране
 
-    private void Awake()
-    {
-        Application.targetFrameRate = 60;
-    }
-
     void Start()
     {
         pRigidBody = GetComponent<Rigidbody2D>();
