@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float jumpForce = 20f; 
+    [SerializeField] private float jumpForce = 13f; 
     [SerializeField] float waitForDown = 0.3f; // время которое нужно удерживать палец на экране для приседа
 
     bool isGrounded = true; // нахождение на земле

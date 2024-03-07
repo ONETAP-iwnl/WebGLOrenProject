@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] spawners;
+    [SerializeField] GameObject spawner;
     [SerializeField] GameObject[] dicorations;
     [SerializeField] GameObject player;
     [SerializeField] GameObject tapText;
@@ -20,10 +20,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isStart = true;
-        foreach (var spawner in spawners)
-        {
-            spawner.SetActive(true);
-        }
+        spawner.SetActive(true);
         foreach (var dicoration in dicorations)
         {
             dicoration.AddComponent<Scrolling>();
@@ -35,10 +32,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator EndGame()
     {
         isStart = true;
-        foreach (var spawner in spawners)
-        {
-            spawner.SetActive(false);
-        }
+        spawner.SetActive(false);
         yield return new WaitForSecondsRealtime(5);
         foreach (var dicoration in dicorations)
         {

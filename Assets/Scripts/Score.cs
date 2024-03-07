@@ -7,6 +7,7 @@ public class Score : MonoBehaviour
     int score = 0;
     [SerializeField] int targetScore = 100;
     GameManager gm;
+    [SerializeField] Spawner spawner;
 
     private void Start()
     {
@@ -17,11 +18,13 @@ public class Score : MonoBehaviour
     public void AddScore(int score)
     {
         this.score += score;
+        
         if(this.score > targetScore) 
         {
             StartCoroutine(gm.EndGame());
         }
         DisplayScore();
+        spawner.wait -= 0.08f;
     }
 
     void DisplayScore()

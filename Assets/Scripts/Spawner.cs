@@ -3,21 +3,24 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] Transform prefab; //префаб обекта для спавна
-    [SerializeField] float wait = 5; //время ожидания между спавнами в секундах
-    [SerializeField] float firstWait = 5;
+    [SerializeField] Transform[] prefabs; //префаб обекта для спавна
+    [SerializeField] Transform[] spawnPoints;
+    [SerializeField] public float wait = 5; //время ожидания между спавнами в секундах
+
     [SerializeField] Score score;
+    private int indexObject;
 
     void Start()
     {
-        StartCoroutine(SpawnObject(firstWait));
+        StartCoroutine(SpawnObject());
     }
 
-    IEnumerator SpawnObject(float wait) 
+    IEnumerator SpawnObject() 
     {
         yield return new WaitForSecondsRealtime(wait);
-        Instantiate(prefab, transform.position, Quaternion.identity);
+        indexObject = Random.Range(0, 2);
+        Instantiate(prefabs[indexObject], spawnPoints[indexObject].position, Quaternion.identity);
         score.AddScore(10);
-        StartCoroutine(SpawnObject(this.wait));
+        StartCoroutine(SpawnObject());
     }
 }
