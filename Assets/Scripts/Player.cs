@@ -1,19 +1,20 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float jumpForce = 2f; 
+    [SerializeField] private float jumpForce = 20f; 
     [SerializeField] float waitForDown = 0.3f; // врем€ которое нужно удерживать палец на экране дл€ приседа
 
     bool isGrounded = true; // нахождение на земле
     private Rigidbody2D pRigidBody;
     private Touch theTouch;
     float timeHold = 0; // переменна€ дл€ хранени€ времени нахождени€ пальца на экране
+    GameManager gm;
 
     void Start()
     {
         pRigidBody = GetComponent<Rigidbody2D>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -56,7 +57,7 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            gm.RestartGame();
         }
     }
     void OnCollisionExit2D(Collision2D collision)

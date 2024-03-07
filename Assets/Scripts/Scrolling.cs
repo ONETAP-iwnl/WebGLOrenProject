@@ -2,16 +2,10 @@ using UnityEngine;
 
 public class Scrolling : MonoBehaviour
 {
-    Material material; 
-    [SerializeField] Vector2 offset; //вектор от которого зависит скорость и направление перемещения фона
-
-    void Start()
-    {
-        material = GetComponent<Renderer>().material;
-    }
+    [SerializeField] public float speed = 0.2f;
 
     void Update()
     {
-        material.mainTextureOffset += offset * Time.deltaTime; //движение текстуры на объекте
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
 }
