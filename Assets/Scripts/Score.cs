@@ -3,19 +3,19 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    TMP_Text text;
+    TMP_Text textScore; //визуальное отображение счета
     int score = 0;
-    [SerializeField] int targetScore = 100;
+    [SerializeField] int targetScore = 100; //количество очеков, которое нужно набрать чтобы завершить игру
     GameManager gm;
     [SerializeField] Spawner spawner;
 
     private void Start()
     {
-        text = GetComponent<TMP_Text>();
+        textScore = GetComponent<TMP_Text>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    public void AddScore(int score)
+    public void AddScore(int score) 
     {
         this.score += score;
         
@@ -27,8 +27,8 @@ public class Score : MonoBehaviour
         spawner.wait -= 0.08f;
     }
 
-    void DisplayScore()
+    void DisplayScore() //отображение очков на экране
     {
-        text.text = score.ToString();
+        textScore.text = score.ToString();
     }
 }
