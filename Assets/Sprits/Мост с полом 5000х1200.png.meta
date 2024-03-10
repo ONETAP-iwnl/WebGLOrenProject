@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,13 +43,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 531, y: 0, z: 273, w: 276}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -119,20 +119,128 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_0"
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 1986
+        width: 52
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a6781320cf5212458eb3e58727caeb0
+      internalID: -761420562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_8"
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 525
+        width: 5002
+        height: 1207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9022a5fef2cacf46bc02954db72459c
+      internalID: -1962134898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_22"
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 851
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d4164a6bad33d4887e08a0bbd0b890
+      internalID: -1022906425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_0": -761420562
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_1": -2011745794
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_10": 969695633
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_11": 505511492
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_12": 1445748571
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_13": -1823786373
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_14": -1729281369
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_15": 1365096707
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_16": -393033947
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_17": 548963722
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_18": -163152654
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_19": -726425411
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_2": -1102952862
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_20": 1874847304
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_21": -1291460502
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_22": -1022906425
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_23": 1059645393
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_24": -1625702788
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_25": -1058292966
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_26": -548377809
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_27": 843154800
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_28": -227007410
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_29": -54596999
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_3": 2143453966
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_30": 1821979933
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_31": -2140999349
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_4": 516642163
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_5": -1870417811
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_6": -785323105
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_7": 319756504
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_8": -1962134898
+      "\u041C\u043E\u0441\u0442 \u0441 \u043F\u043E\u043B\u043E\u043C 5000\u04451200_9": -1230265756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    float jumpForce = 17f;
+    float jumpForce = 19f;
     float slicesizeY = 1f; //размер коллайдера коллайдера по y во время коллайдера
     float runsizeY = 2f; //размер колллайджера по y во время бега
     float sliceTime = 0.5f; //время нахождения в подкате
