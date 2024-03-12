@@ -24,7 +24,7 @@ public class Score : MonoBehaviour
             StartCoroutine(gm.EndGame());
         }
         DisplayScore();
-        spawner.wait -= 0.08f;
+        spawner.wait -= 0.01f;
     }
 
     void DisplayScore() //отображение очков на экране

@@ -6889,7 +6889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8fbab7f5a6fd5348866a1a13ece2e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScore: 300
+  targetScore: 250
   spawner: {fileID: 1399578491}
 --- !u!1 &1766928984
 GameObject:

@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         isStart = true;
         spawner.SetActive(true);
-        back.speed = 5f; skay.speed = 0.02f; //назначение скорости элементам визуала
+        back.speed = 5f; skay.speed = 0.2f; //назначение скорости элементам визуала
         player.AddComponent<Player>();
         tapText.SetActive(false);
     }

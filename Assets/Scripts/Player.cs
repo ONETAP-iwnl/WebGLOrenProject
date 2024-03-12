@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     float jumpForce = 19f;
     float slicesizeY = 1f; //размер коллайдера коллайдера по y во время коллайдера
     float runsizeY = 2f; //размер колллайджера по y во время бега
-    float sliceTime = 0.5f; //время нахождения в подкате
+    float sliceTime = 0.7f; //время нахождения в подкате
     bool isSlice = false;
 
     bool isGrounded = true; // нахождение на земле
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         if (fingerDown)
         {
 
-            if (Input.touches[0].position.y >= startPos.y + pixelDistToDetect) //свайп вверх
+            if (!isSlice && Input.touches[0].position.y >= startPos.y + pixelDistToDetect) //свайп вверх
             {
                 fingerDown = false;
 
@@ -67,15 +67,15 @@ public class Player : MonoBehaviour
 
                 isSlice = false;
             }
-            else if (Input.touches[0].position.y <= startPos.y - pixelDistToDetect) // свайп вниз
+            else if (!isSlice && Input.touches[0].position.y <= startPos.y - pixelDistToDetect) // свайп вниз
             {
                 fingerDown = false;
-                if (!isSlice && collider2D.size.y > slicesizeY)
+                if (collider2D.size.y > slicesizeY)
                 {
                     isSlice = true;
                     StartCoroutine(Slice());
                 }
-                isSlice = false;
+                
             }
 
 
@@ -90,6 +90,7 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Slice");
         yield return new WaitForSecondsRealtime(sliceTime); //ожидания завершения анимации
         collider2D.size = new Vector2(1f, runsizeY);    //возвращение норм коллайдера 
+        isSlice = false;
     }
 
     void Jump()
