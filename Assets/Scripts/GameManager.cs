@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject tapText; //текст который будет просить тапнуть на экран для начала игры
     [SerializeField] GameObject restartButton;
-    bool isStart = false; //начата ли игра
+    public bool isStart = false; //начата ли игра
 
     private void Awake()
     {
@@ -29,11 +29,16 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator EndGame() //куратинаЮ которая останавливает дивжение игры, выключает управление персонажем после того как препятсвия будут позади
     {
-        isStart = true;
+        isStart = false;
         spawner.SetActive(false);
         yield return new WaitForSecondsRealtime(5);
         back.speed = 0; skay.speed = 0;
-        Destroy(player.GetComponent<Player>());
+        restartButton.SetActive(true);
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
         restartButton.SetActive(true);
     }
 
@@ -47,6 +52,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 }

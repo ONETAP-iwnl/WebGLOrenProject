@@ -5,9 +5,10 @@ public class Score : MonoBehaviour
 {
     TMP_Text textScore; //визуальное отображение счета
     int score = 0;
-    [SerializeField] int targetScore = 100; //количество очеков, которое нужно набрать чтобы завершить игру
     GameManager gm;
-    [SerializeField] Spawner spawner;
+
+    [SerializeField] int targetScore = 100; //количество очеков, которое нужно набрать чтобы завершить игру
+    [SerializeField] Spawner spawner;//спавнер препятсявия. (очки добавляются с добавление препятствия)
 
     private void Start()
     {

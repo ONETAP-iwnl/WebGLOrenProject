@@ -3,35 +3,37 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    float jumpForce = 19f;
-    float slicesizeY = 1f; //размер коллайдера коллайдера по y во время коллайдера
+    [SerializeField] float jumpForce;
+    [SerializeField] float sliceTime; //время нахождения в подкате
+
+    float slicesizeY = 1f; //размер коллайдера коллайдера по y во время подката
     float runsizeY = 2f; //размер колллайджера по y во время бега
-    float sliceTime = 0.7f; //время нахождения в подкате
     bool isSlice = false;
 
     bool isGrounded = true; // нахождение на земле
     private Rigidbody2D pRigidBody;
     GameManager gm;
     private Animator animator;
-    CapsuleCollider2D collider2D;
+    CapsuleCollider2D capsulCollider2D;
 
     private Vector2 startPos;
-    public int pixelDistToDetect = 20;
+    int pixelDistToDetect = 20;
     private bool fingerDown;
-
-
 
     void Start()
     {
         pRigidBody = GetComponent<Rigidbody2D>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         animator = GetComponentInChildren<Animator>();
-        collider2D = GetComponent<CapsuleCollider2D>();
+        capsulCollider2D = GetComponent<CapsuleCollider2D>();
     }
 
     private void Update()
     {
-        PlayerControl();
+        if (gm.isStart)
+        {
+            PlayerControl();
+        }
     }
 
     private void PlayerControl()
@@ -70,7 +72,7 @@ public class Player : MonoBehaviour
             else if (!isSlice && Input.touches[0].position.y <= startPos.y - pixelDistToDetect) // свайп вниз
             {
                 fingerDown = false;
-                if (collider2D.size.y > slicesizeY)
+                if (capsulCollider2D.size.y > slicesizeY)
                 {
                     isSlice = true;
                     StartCoroutine(Slice());
@@ -86,10 +88,10 @@ public class Player : MonoBehaviour
     }
     IEnumerator Slice()
     {
-        collider2D.size = new Vector2(1f, slicesizeY); //изменение размеров коллайдера
+        capsulCollider2D.size = new Vector2(1f, slicesizeY); //изменение размеров коллайдера
         animator.SetTrigger("Slice");
         yield return new WaitForSecondsRealtime(sliceTime); //ожидания завершения анимации
-        collider2D.size = new Vector2(1f, runsizeY);    //возвращение норм коллайдера 
+        capsulCollider2D.size = new Vector2(1f, runsizeY);    //возвращение норм коллайдера 
         isSlice = false;
     }
 
@@ -101,19 +103,17 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Entered");
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            gm.RestartGame();
+            gm.GameOver();
         }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("Exited");
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;

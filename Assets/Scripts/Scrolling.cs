@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Scrolling : MonoBehaviour
 {
-    [SerializeField] public float speed = 6f;
+    public float speed = 6f;
 
     void Update()
     {

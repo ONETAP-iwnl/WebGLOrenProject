@@ -1038,7 +1038,7 @@ GameObject:
   m_Component:
   - component: {fileID: 298598281}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: SpawnPointUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1052,8 +1052,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298598279}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.099999905, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4169,6 +4169,7 @@ GameObject:
   - component: {fileID: 1010174627}
   - component: {fileID: 1010174626}
   - component: {fileID: 1010174625}
+  - component: {fileID: 1010174628}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4254,6 +4255,20 @@ Transform:
   - {fileID: 534708271}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1010174628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010174624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14252b7d81eab9e4c810e11495f9a37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 19
+  sliceTime: 0.7
 --- !u!1 &1016931901
 GameObject:
   m_ObjectHideFlags: 0
@@ -4701,6 +4716,7 @@ MonoBehaviour:
   player: {fileID: 1010174624}
   tapText: {fileID: 2088681899}
   restartButton: {fileID: 415405418}
+  isStart: 0
 --- !u!4 &1126553880
 Transform:
   m_ObjectHideFlags: 0
@@ -5407,12 +5423,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79b61866372b7c4c9add06b6277aefc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 8061928162327847455, guid: 6c12d1cbd6b1fe5429cb063cc39ea337, type: 3}
-  - {fileID: 5091646197730438090, guid: 536e319b6005ecf4283fdbd684a7968d, type: 3}
-  spawnPoints:
-  - {fileID: 1633282973}
-  - {fileID: 298598281}
+  obstancesUp:
+  - {fileID: 940936487585047310, guid: 536e319b6005ecf4283fdbd684a7968d, type: 3}
+  obstancesDown:
+  - {fileID: 1988973201047785138, guid: 6c12d1cbd6b1fe5429cb063cc39ea337, type: 3}
+  - {fileID: 940936487585047310, guid: aca47a57cc23a484495c3b8e393a4839, type: 3}
+  spawnPointUp: {fileID: 298598281}
+  spawnPointDown: {fileID: 1633282973}
   wait: 2
   score: {fileID: 1766055979}
 --- !u!4 &1399578492
@@ -6134,7 +6151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1633282973}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: SpawnPointDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
