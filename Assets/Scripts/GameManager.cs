@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject spawner; 
     [SerializeField] Scrolling back, skay; //бекграунд дорога и звезды которые будут двигатьс€ во прем€ игры
-    [SerializeField] GameObject player;
+    [SerializeField] Player player;
     [SerializeField] GameObject tapText; //текст который будет просить тапнуть на экран дл€ начала игры
     [SerializeField] GameObject restartButton;
     public bool isStart = false; //начата ли игра
@@ -21,17 +21,18 @@ public class GameManager : MonoBehaviour
     public void StartGame() //метод который привод в дижение всю игру надел€€ компонеты нужными скриптами
     {
         isStart = true;
-        spawner.SetActive(true);
+        spawner.gameObject.SetActive(true);
         back.speed = 5f; skay.speed = 0.2f; //назначение скорости элементам визуала
-        player.AddComponent<Player>();
+        player.Run();
         tapText.SetActive(false);
     }
 
     public IEnumerator EndGame() //куратинаё котора€ останавливает дивжение игры, выключает управление персонажем после того как преп€тсви€ будут позади
-    {
-        isStart = false;
-        spawner.SetActive(false);
+    {    
+        spawner.GetComponent<Spawner>().isActive = false;
         yield return new WaitForSecondsRealtime(5);
+        isStart = false;
+        player.StopRun();
         back.speed = 0; skay.speed = 0;
         restartButton.SetActive(true);
     }

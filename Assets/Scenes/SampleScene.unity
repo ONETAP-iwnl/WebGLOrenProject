@@ -2010,8 +2010,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1416425445, guid: b39d1ff4afa7fde49af50040edf6b853, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 1458e9a95a40695458688308862a3fc3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4236,8 +4236,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.050000012, y: -0.042685628}
-  m_Size: {x: 1, y: 1.8965023}
+  m_Offset: {x: 0.014373064, y: -0.042685628}
+  m_Size: {x: 0.5, y: 2}
   m_Direction: 0
 --- !u!4 &1010174627
 Transform:
@@ -4268,7 +4268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 19
-  sliceTime: 0.7
+  sliceTime: 0.6
+  sliceSize: {x: 0.7, y: 0.5}
+  runSize: {x: 0.5, y: 2}
 --- !u!1 &1016931901
 GameObject:
   m_ObjectHideFlags: 0
@@ -4713,7 +4715,7 @@ MonoBehaviour:
   spawner: {fileID: 1399578490}
   back: {fileID: 1827655438}
   skay: {fileID: 659786280}
-  player: {fileID: 1010174624}
+  player: {fileID: 1010174628}
   tapText: {fileID: 2088681899}
   restartButton: {fileID: 415405418}
   isStart: 0
@@ -5432,6 +5434,7 @@ MonoBehaviour:
   spawnPointDown: {fileID: 1633282973}
   wait: 2
   score: {fileID: 1766055979}
+  isActive: 1
 --- !u!4 &1399578492
 Transform:
   m_ObjectHideFlags: 0
@@ -6906,7 +6909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8fbab7f5a6fd5348866a1a13ece2e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScore: 250
+  targetScore: 30
   spawner: {fileID: 1399578491}
 --- !u!1 &1766928984
 GameObject:

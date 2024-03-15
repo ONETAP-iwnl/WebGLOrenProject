@@ -12,9 +12,10 @@ public class Spawner : MonoBehaviour
     System.Random rnd = new System.Random();//встренная в unity по какойто причине не работает
     [SerializeField] Score score;
     private int indexObject; //значение которое будет выбирать рандомно для создание опредленного препятствия с определенным положением
+    public bool isActive = true;
 
     void Start()
-    {
+    {       
         StartCoroutine(SpawnObject());
     }
 
@@ -31,6 +32,7 @@ public class Spawner : MonoBehaviour
             Instantiate(obstancesUp[rnd.Next(0, obstancesUp.Length)].gameObject, spawnPointUp.position, Quaternion.identity);
         }
         score.AddScore(10); //добавление очков
-        StartCoroutine(SpawnObject());
+        if (isActive)
+            StartCoroutine(SpawnObject());
     }
 }

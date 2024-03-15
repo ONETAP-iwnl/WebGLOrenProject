@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] float sliceTime; //время нахождения в подкате
 
-    float slicesizeY = 1f; //размер коллайдера коллайдера по y во время подката
-    float runsizeY = 2f; //размер колллайджера по y во время бега
+    [SerializeField] Vector2 sliceSize = new Vector2(0.5f, 0.5f);//размер коллайдера коллайдера по y во время подката
+    [SerializeField] Vector2 runSize = new Vector2(0.5f, 2f); //размер колллайджера по y во время бега
     bool isSlice = false;
 
     bool isGrounded = true; // нахождение на земле
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
             else if (!isSlice && Input.touches[0].position.y <= startPos.y - pixelDistToDetect) // свайп вниз
             {
                 fingerDown = false;
-                if (capsulCollider2D.size.y > slicesizeY)
+                if (capsulCollider2D.size.y > sliceSize.y)
                 {
                     isSlice = true;
                     StartCoroutine(Slice());
@@ -88,10 +88,10 @@ public class Player : MonoBehaviour
     }
     IEnumerator Slice()
     {
-        capsulCollider2D.size = new Vector2(1f, slicesizeY); //изменение размеров коллайдера
+        capsulCollider2D.size = sliceSize; //изменение размеров коллайдера
         animator.SetTrigger("Slice");
         yield return new WaitForSecondsRealtime(sliceTime); //ожидания завершения анимации
-        capsulCollider2D.size = new Vector2(1f, runsizeY);    //возвращение норм коллайдера 
+        capsulCollider2D.size = runSize;    //возвращение норм коллайдера 
         isSlice = false;
     }
 
@@ -99,6 +99,16 @@ public class Player : MonoBehaviour
     {
         pRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         animator.SetTrigger("Jump");
+    }
+
+    public void Run()
+    {
+        animator.SetBool("isRun", true);
+    }
+
+    public void StopRun()
+    {
+        animator.SetBool("isRun", false);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
