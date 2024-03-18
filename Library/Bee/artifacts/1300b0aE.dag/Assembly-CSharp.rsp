@@ -438,6 +438,7 @@
 "Assets/LeanTween/Testing/TestingRotate.cs"
 "Assets/LeanTween/Testing/TestingSceneSwitching.cs"
 "Assets/LeanTween/Testing/TestingSequencer.cs"
+"Assets/Scripts/AudioManager.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/Obstacle.cs"
 "Assets/Scripts/Player.cs"

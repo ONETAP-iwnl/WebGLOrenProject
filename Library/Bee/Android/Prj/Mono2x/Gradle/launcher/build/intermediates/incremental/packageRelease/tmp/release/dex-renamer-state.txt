@@ -1,4 +1,4 @@
-#Sat Mar 09 21:59:21 YEKT 2024
-base.0=C\:\\Users\\romka\\Desktop\\ftdg\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+#Mon Mar 18 21:33:49 YEKT 2024
+base.0=C\:\\pomka\\WebGLOrenProject\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

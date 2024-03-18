@@ -21,12 +21,16 @@ public class Player : MonoBehaviour
     int pixelDistToDetect = 20;
     private bool fingerDown;
 
+    [SerializeField] AudioClip jumpAudio, sliceAudio;
+    AudioSource playerAudio;
+
     void Start()
     {
         pRigidBody = GetComponent<Rigidbody2D>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         animator = GetComponentInChildren<Animator>();
         capsulCollider2D = GetComponent<CapsuleCollider2D>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -91,6 +95,7 @@ public class Player : MonoBehaviour
     {
         capsulCollider2D.size = sliceSize; //изменение размеров коллайдера
         animator.SetTrigger("Slice");
+        playerAudio.PlayOneShot(sliceAudio);
         yield return new WaitForSecondsRealtime(sliceTime); //ожидания завершения анимации
         capsulCollider2D.size = runSize;    //возвращение норм коллайдера 
         isSlice = false;
@@ -98,6 +103,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
+        playerAudio.PlayOneShot(jumpAudio);
         pRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         animator.SetTrigger("Jump");
     }
@@ -106,12 +112,14 @@ public class Player : MonoBehaviour
     {
         isControling = true;
         animator.SetBool("isRun", true);
+        playerAudio.Play();
     }
 
     public void StopRun()
     {
         isControling = false;
         animator.SetBool("isRun", false);
+        playerAudio.Stop();
     }
 
     void OnCollisionEnter2D(Collision2D collision)

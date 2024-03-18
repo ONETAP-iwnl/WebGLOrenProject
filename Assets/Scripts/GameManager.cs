@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] GameObject tapText; //текст который будет просить тапнуть на экран дл€ начала игры
     [SerializeField] GameObject restartButton;
+    AudioManager audioManager;
     public bool isStart = false; //начата ли игра
 
     private void Awake()
@@ -16,6 +17,11 @@ public class GameManager : MonoBehaviour
         //оптимизаци€
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 90;
+    }
+
+    private void Start()
+    {
+        audioManager = GetComponent<AudioManager>();
     }
 
     public void StartGame() //метод который привод в дижение всю игру надел€€ компонеты нужными скриптами
@@ -29,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator EndGame() //куратинаё котора€ останавливает дивжение игры, выключает управление персонажем после того как преп€тсви€ будут позади
     {    
-        spawner.GetComponent<Spawner>().isActive = false;
+        spawner.GetComponent<Spawner>().Deactivate();
         yield return new WaitForSecondsRealtime(5);
         restartButton.SetActive(true);
         player.StopRun();
@@ -38,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        spawner.GetComponent<Spawner>().Deactivate();
         Time.timeScale = 0;
         restartButton.SetActive(true);
     }
@@ -55,4 +62,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+
+
+    
 }
