@@ -31,10 +31,9 @@ public class GameManager : MonoBehaviour
     {    
         spawner.GetComponent<Spawner>().isActive = false;
         yield return new WaitForSecondsRealtime(5);
-        isStart = false;
+        restartButton.SetActive(true);
         player.StopRun();
         back.speed = 0; skay.speed = 0;
-        restartButton.SetActive(true);
     }
 
     public void GameOver()

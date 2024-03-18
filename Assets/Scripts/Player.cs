@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     bool isSlice = false;
 
     bool isGrounded = true; // нахождение на земле
+    bool isControling = false; //возможно ли сейчас управлять персонажем
     private Rigidbody2D pRigidBody;
     GameManager gm;
     private Animator animator;
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (gm.isStart)
+        if (isControling) //если сейчас можно управлять персонажем, то даем управление
         {
             PlayerControl();
         }
@@ -103,11 +104,13 @@ public class Player : MonoBehaviour
 
     public void Run()
     {
+        isControling = true;
         animator.SetBool("isRun", true);
     }
 
     public void StopRun()
     {
+        isControling = false;
         animator.SetBool("isRun", false);
     }
 
